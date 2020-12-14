@@ -4,6 +4,15 @@
   const todos = [];
   const tbody = document.getElementById('tbody');
 
+  let deleteTodo = (deleteRow) => {
+
+    todos.splice(deleteRow, 1);
+
+    displayTodo(todos);
+
+  }
+
+
 
   let displayTodo = (todos) => {
     
@@ -25,6 +34,13 @@
       tdTask.textContent = todo.task;
       stateButton.textContent = todo.status;
       delButton.textContent = '削除';
+      delButton.addEventListener('click', () => {
+
+        const deleteRow = delButton.parentNode.parentNode.firstChild.textContent;
+        deleteTodo(deleteRow);
+        
+      }); 
+
       tr.appendChild(tdIndex);
       tr.appendChild(tdTask);
       tdState.appendChild(stateButton);
