@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo(3-1task add)</title>
+  <style>
+    body{
+      font-family:'Times New Roman', Times, serif
+    }
+  </style>
+</head>
+<body>
+  <h1>ToDo リスト</h1>
+
+  <div class="status">
+    <input type="radio" name="state" checked="checked">すべて
+    <input type="radio" name="state">作業中
+    <input type="radio" name="state">完了
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>コメント</th>
+        <th>状態</th>
+      </tr>
+    </thead>
+    <tbody  id="tbody">
+
+    </tbody>
+  </table>
+
+  <h2>新規タスクの追加</h2>
+  <input type="text" id="comment">
+  <button type="button" id="btn">追加</button>
+
+  
+
+  <script src="js/main.js"></script>
+</body>
+</html>
