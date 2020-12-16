@@ -18,7 +18,7 @@
     displayTodo(todos);
   };
   
-  let alltodo = document.getElementById('alltodo');
+  const alltodo = document.getElementById('alltodo');
   alltodo.onclick = () => {
     todos.forEach(todo => {
       todo.visible = 'on';
@@ -26,7 +26,7 @@
     displayTodo(todos);
   };
 
-  let workTodo = document.getElementById('worktodo');
+  const workTodo = document.getElementById('worktodo');
   workTodo.onclick = () => {
     todos.forEach(todo => {
       if(todo.status !== '作業中'){
@@ -38,7 +38,7 @@
     displayTodo(todos);
   };
 
-  let compTodo = document.getElementById('comptodo');
+  const compTodo = document.getElementById('comptodo');
   compTodo.onclick = () => {
     todos.forEach(todo => {
       if(todo.status !== '完了'){
