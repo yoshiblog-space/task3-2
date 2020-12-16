@@ -7,15 +7,18 @@
     body{
       font-family:'Times New Roman', Times, serif
     }
+    hide{
+      visibility: collapse;
+    }
   </style>
 </head>
 <body>
   <h1>ToDo リスト</h1>
 
   <div class="status">
-    <input type="radio" name="state" checked="checked">すべて
-    <input type="radio" name="state">作業中
-    <input type="radio" name="state">完了
+    <input type="radio" id="alltodo" name="state" checked="checked">すべて
+    <input type="radio" id="worktodo" name="state">作業中
+    <input type="radio" id="comptodo" name="state">完了
   </div>
 
   <table>
@@ -34,7 +37,7 @@
   <h2>新規タスクの追加</h2>
   <input type="text" id="comment">
   <button type="button" id="btn">追加</button>
-
+  
   <script src="js/main.js"></script>
 </body>
 </html>
