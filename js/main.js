@@ -4,12 +4,12 @@
   const todos = [];
   const tbody = document.getElementById('tbody');
 
-  let deleteTodo = (deleteRow) => {
+  const deleteTodo = (deleteRow) => {
     todos.splice(deleteRow, 1);
     displayTodo(todos);
   };
 
-  let changeTodo = (changeRow) => {
+  const changeTodo = (changeRow) => {
     if(todos[changeRow].status === '作業中'){
       todos[changeRow].status = '完了';
     }else{
