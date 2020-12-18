@@ -4,21 +4,52 @@
   const todos = [];
   const tbody = document.getElementById('tbody');
 
-  let deleteTodo = (deleteRow) => {
+  const deleteTodo = (deleteRow) => {
     todos.splice(deleteRow, 1);
     displayTodo(todos);
   };
 
-  let changeTodo = (changeRow) => {
-
-    if(todos[changeRow].status === "作業中"){
-      todos[changeRow].status = "完了";
+  const changeTodo = (changeRow) => {
+    if(todos[changeRow].status === '作業中'){
+      todos[changeRow].status = '完了';
     }else{
-      todos[changeRow].status = "作業中";     
+      todos[changeRow].status = '作業中';     
     }
-
     displayTodo(todos);
   };
+  
+  const alltodo = document.getElementById('alltodo');
+  alltodo.onclick = () => {
+    todos.forEach(todo => {
+      todo.visible = 'on';
+    });
+    displayTodo(todos);
+  };
+
+  const workTodo = document.getElementById('worktodo');
+  workTodo.onclick = () => {
+    todos.forEach(todo => {
+      if(todo.status !== '作業中'){
+        todo.visible = 'off';
+      }else{
+        todo.visible = 'on';
+      }
+    });
+    displayTodo(todos);
+  };
+
+  const compTodo = document.getElementById('comptodo');
+  compTodo.onclick = () => {
+    todos.forEach(todo => {
+      if(todo.status !== '完了'){
+        todo.visible = 'off';
+      }else{
+        todo.visible = 'on';
+      }
+    });
+    displayTodo(todos);
+  };
+
 
   let displayTodo = (todos) => {
     
@@ -27,6 +58,10 @@
     }
 
     todos.forEach((todo, idx) => {
+      if(todo.visible === 'off'){
+        return;
+      }
+      
       const tr = document.createElement('tr');
       const tdIndex = document.createElement('td');  
       const tdTask = document.createElement('td');
@@ -55,20 +90,26 @@
       tdState.appendChild(stateButton);
       tdDelete.appendChild(delButton);
       tr.appendChild(tdState);
-      tr.appendChild(tdDelete);
+      tr.appendChild(tdDelete);      
       tbody.appendChild(tr);
     });
   };
   
+
   document.getElementById('btn').addEventListener('click', () => {
     const todoComment = document.getElementById('comment');
     const todo = {
       task: todoComment.value,
-      status: '作業中'
+      status: '作業中',
     };
-  
+
+    if(compTodo.checked){
+      todo.visible = 'off';
+    }else{
+      todo.visible = 'on';
+    }
+
     todos.push(todo);
     displayTodo(todos);
   });
-
 }
